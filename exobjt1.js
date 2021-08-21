@@ -1,49 +1,57 @@
 let genredes = () => {
-    let redevet = []
-    for(let i=0;i<2;i++){
-        let redes = {
+    let vetredes = []
+    for(let i=0;i<5;i++){
+        let objeto = {
             codigo: Number(prompt(`Informe o código da rede social`)),
-            nome: prompt(`Digite o nome da rede social`),
-            link: prompt(`Insira o link da rede social`)
+            nome: prompt(`Informe o nome da rede social`),
+            link: prompt(`Informe o link da rede social`)
         }
-        redevet.push(redes)
+        vetredes.push(objeto)
     }
-    let usuvet = []
+    let vetusuarios = []
     let i = 0
-    while(i<2){
-        let usuarios = {
-            login: prompt(`Informe o login do usuario`),
-            nome: prompt(`Informe o nome do usuario`),
-            codigorede: Number(prompt(`Informe o código de rede social`)),
-            qtdp: Number(prompt(`Informe a quantidade de posts do usuario`))
+    while(i<5){
+        let objeto = {
+            login: prompt(`Informe o login do usuário`),
+            nome: prompt(`Informe o nome do usuário`),
+            codredesocial: Number(prompt(`Informe o código da rede social`)),
+            qtposts: Number(prompt(`Informe a quantidade de posts`))
         }
         let achou = false
         let j = 0
-        while(!achou && j<2){
-            if(redevet[j].codigo==usuarios.codigorede){
-                usuvet.push(usuarios)
+        while(!achou && j<5){
+            if(vetredes[j].codigo == objeto.codredesocial){
+                vetusuarios.push(objeto)
                 achou = true
-                alert(`Usuario inserido com sucesso`)
+                alert(`Usuário inserido com sucesso`)
             }
             j++
         }
         if(!achou){
-            alert(`codigo invalido`)
+            alert(`Usuário não inserido, rede social não encontrada`)
         }
         i++
     }
-    let codigo = Number(prompt(`Informe o codigo da rede social`))
+    let codigo = Number(prompt(`Informe o código da rede social`))
     let conta = 0
-    
     for(let i=0;i<5;i++){
-        if(usuvet[i].codigorede == codigo){
-            conta = conta + usuvet[i].qtdp
+        if(vetusuarios[i].codredesocial == codigo){
+            conta = conta + vetusuarios[i].qtposts
         }
     }
     if(conta==0){
-        console.log(`Não houve postagem ou a rede social não existe`)
+        console.log(`não houve postagem ou a rede social não existe`)
     }
     else{
         console.log(`A quantidade de posts na rede social ${codigo} foi ${conta}`)
+    }
+    for(let i=0;i<5;i++){
+        let conta = 0
+        for(let j=0;j<5;j++){
+            if(vetredes[i].codigo == vetusuarios[j].codredesocial){
+                conta = conta + vetusuarios[i].qtposts
+            }
+        }
+        console.log(`A quantidade de posts da rede social ${vetredes[i].codigo} é ${conta}`) 
     }
 }
