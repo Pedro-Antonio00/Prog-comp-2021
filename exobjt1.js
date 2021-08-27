@@ -54,4 +54,39 @@ let genredes = () => {
         }
         console.log(`A quantidade de posts da rede social ${vetredes[i].codigo} é ${conta}`) 
     }
+
+    let login = prompt(`Informe o login do usuário desejado`)
+
+    let somaposts = 0
+    let achou = false
+    for(let i=0;i<5;i++){
+        if(login == vetusuarios[i].login){
+            somaposts=somaposts+vetusuarios[i].qtposts
+            achou=true
+        }
+    }
+    if(achou){
+        alert(`O usuário com login ${login} realizou ${somaposts}`)
+    }
+    else{
+        alert(`Usuário não encontrado`)
+    }
+
+    let vetuserposts=[]
+    for(let i=0;i<5;i++){
+        let achou = false
+        for(let j=0;j<vetuserposts.length;j++){
+            if(vetusuarios[i].login == vetuserposts[j].login){
+                vetuserposts[j].qtde = vetuserposts[j].qtde+vetusuarios.qtposts
+                achou = true
+            }
+        }
+        if(!achou){
+            vetuserposts.push({
+                login: vetusuarios[i].login,
+                qtde: vetusuarios[i].qtposts
+            })
+        }
+    }
+    console.log(vetuserposts)
 }
